@@ -217,10 +217,10 @@ export default function LandingPage() {
                     <button
                       type="button"
                       onClick={() => setShowPin(!showPin)}
-                      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 p-1 rounded-lg transition-colors cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#17D059] hover:bg-slate-800/80 p-1.5 rounded-lg transition-colors cursor-pointer z-10"
                       title={showPin ? "Hide access code" : "Show access code"}
                     >
-                      {showPin ? <EyeOff size={16} /> : <Eye size={16} />}
+                      {showPin ? <EyeOff size={18} /> : <Eye size={18} />}
                     </button>
                   </div>
                 </div>
