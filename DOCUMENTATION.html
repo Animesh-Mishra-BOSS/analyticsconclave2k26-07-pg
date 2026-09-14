@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+
+@page {
+    size: A4;
+    margin: 20mm 15mm 20mm 15mm;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.6;
+    font-size: 13.5px;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #0f172a;
+    font-weight: 700;
+    margin-top: 1.4em;
+    margin-bottom: 0.5em;
+    line-height: 1.25;
+}
+h1 {
+    font-size: 26px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    page-break-before: always;
+}
+h1:first-of-type {
+    page-break-before: avoid;
+}
+h2 {
+    font-size: 20px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 6px;
+}
+h3 {
+    font-size: 16px;
+}
+p, ul, ol {
+    margin-bottom: 1em;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 12.5px;
+    page-break-inside: avoid;
+}
+th, td {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+th {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-weight: 600;
+}
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 12px;
+    background-color: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+}
+pre {
+    background-color: #0f172a;
+    color: #e2e8f0;
+    padding: 14px 16px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    page-break-inside: avoid;
+    margin: 1.2em 0;
+}
+pre code {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+}
+blockquote {
+    border-left: 4px solid #10b981;
+    margin: 1.2em 0;
+    padding: 8px 16px;
+    background-color: #f0fdf4;
+    color: #166534;
+    border-radius: 0 6px 6px 0;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 2em 0;
+}
+a {
+    color: #0284c7;
+    text-decoration: none;
+}
+
+</style>
+</head>
+<body>
+<hr />
+<p>title: "OPTI-X GALAXY PG — AERO NEXUS"
+subtitle: "Full Technical &amp; Functional Documentation"
+date: "September 2026"</p>
+<hr />
+<div style="text-align:center; padding: 60px 0 40px;">
+<h1 style="font-size:42px; font-weight:900; letter-spacing:-1px;">OPTI-X GALAXY PG</h1>
+<h2 style="font-size:28px; color:#17D059; font-weight:700;">AERO NEXUS</h2>
+<p style="font-size:16px; color:#666; margin-top:12px;">PG Business Analytics Game 2026 — Full Technical & Functional Documentation</p>
+<p style="font-size:13px; color:#999; margin-top:8px;">Version 0.1.0 · Last Updated: September 14, 2026</p>
+</div>
+
+<hr />
+<h1 id="table-of-contents">Table of Contents</h1>
+<ol>
+<li><a href="#1-project-overview">Project Overview</a></li>
+<li><a href="#2-tech-stack">Tech Stack</a></li>
+<li><a href="#3-architecture-overview">Architecture Overview</a></li>
+<li><a href="#4-database-schema">Database Schema</a></li>
+<li><a href="#5-authentication--authorization">Authentication &amp; Authorization</a></li>
+<li><a href="#6-api-reference">API Reference</a></li>
+<li><a href="#7-frontend-pages--user-flow">Frontend Pages &amp; User Flow</a></li>
+<li><a href="#8-components-library">Components Library</a></li>
+<li><a href="#9-game-mechanics--scoring">Game Mechanics &amp; Scoring</a></li>
+<li><a href="#10-admin-dashboard">Admin Dashboard</a></li>
+<li><a href="#11-types--utilities">Types &amp; Utilities</a></li>
+<li><a href="#12-configuration--environment">Configuration &amp; Environment</a></li>
+<li><a href="#13-deployment-guide">Deployment Guide</a></li>
+<li><a href="#14-project-structure">Project Structure</a></li>
+</ol>
+<hr />
+<h1 id="1-project-overview">1. Project Overview</h1>
+<h2 id="11-introduction">1.1 Introduction</h2>
+<p><strong>OPTI-X GALAXY PG</strong> (codenamed <em>AERO NEXUS</em>) is a real-time, multiplayer business analytics simulation game designed for postgraduate students. Built for the <strong>Analytics Konclave 2026</strong> at <strong>KIIT School of Management (KSOM)</strong>, it challenges teams to forecast airline seat occupancy by analyzing 60 historical monthly records and predicting Economy and Premium Economy seat demand across 6 competitive rounds.</p>
+<h2 id="12-game-concept">1.2 Game Concept</h2>
+<p>Teams take on the role of <strong>Business Analytics Consultants</strong> supporting the demand-planning team of a growing Indian airline. The airline operates a fleet of narrow-body aircraft on domestic trunk routes and needs accurate seat-demand forecasts for both Economy and Premium Economy cabins. Forecasts feed into the Revenue Management System (RMS) — over-forecasting leads to surplus unsold inventory; under-forecasting means rejected bookings and revenue leakage.</p>
+<h2 id="13-key-features">1.3 Key Features</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>60 Historical Monthly Records</strong></td>
+<td>Rich training dataset with 15 demand driver variables</td>
+</tr>
+<tr>
+<td><strong>6 Live Rounds</strong></td>
+<td>Each round presents a unique monthly scenario (Monsoon, Festive, Wedding, etc.)</td>
+</tr>
+<tr>
+<td><strong>Real-Time Timer</strong></td>
+<td>Configurable countdown timer (default 10 minutes per round)</td>
+</tr>
+<tr>
+<td><strong>Dual Forecasting</strong></td>
+<td>Teams predict Economy Seats (~16,000–22,000) and Premium Economy Seats (~1,600–2,500)</td>
+</tr>
+<tr>
+<td><strong>Weighted Scoring</strong></td>
+<td>60% Economy accuracy + 40% Premium accuracy, with penalty modifiers</td>
+</tr>
+<tr>
+<td><strong>Live Leaderboard</strong></td>
+<td>Real-time competitive rankings</td>
+</tr>
+<tr>
+<td><strong>Admin Command Center</strong></td>
+<td>Full game master control panel</td>
+</tr>
+<tr>
+<td><strong>Session Conflict Handling</strong></td>
+<td>Prevents multi-device login with force-login option</td>
+</tr>
+<tr>
+<td><strong>Bulk Team Import</strong></td>
+<td>Excel-based team onboarding</td>
+</tr>
+<tr>
+<td><strong>Export Capabilities</strong></td>
+<td>Export teams and submissions to Excel</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="2-tech-stack">2. Tech Stack</h1>
+<h2 id="21-core-technologies">2.1 Core Technologies</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Framework</strong></td>
+<td>Next.js (App Router)</td>
+<td>14.2.35</td>
+</tr>
+<tr>
+<td><strong>Language</strong></td>
+<td>TypeScript</td>
+<td>5.x</td>
+</tr>
+<tr>
+<td><strong>UI Library</strong></td>
+<td>React</td>
+<td>18.x</td>
+</tr>
+<tr>
+<td><strong>Styling</strong></td>
+<td>Tailwind CSS</td>
+<td>3.x</td>
+</tr>
+<tr>
+<td><strong>Animations</strong></td>
+<td>Framer Motion</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Icons</strong></td>
+<td>Lucide React</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Charts</strong></td>
+<td>Recharts</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>PostgreSQL (Neon Serverless)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>ORM</strong></td>
+<td>Prisma</td>
+<td>6.19.3</td>
+</tr>
+<tr>
+<td><strong>Auth (JWT)</strong></td>
+<td>jose</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Password Hashing</strong></td>
+<td>bcryptjs</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Excel I/O</strong></td>
+<td>xlsx (SheetJS)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="22-development-tools">2.2 Development Tools</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ESLint</strong></td>
+<td>Code linting</td>
+</tr>
+<tr>
+<td><strong>PostCSS</strong></td>
+<td>CSS processing pipeline</td>
+</tr>
+<tr>
+<td><strong>Prisma Studio</strong></td>
+<td>Database GUI (<code>npm run db:studio</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="3-architecture-overview">3. Architecture Overview</h1>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                        CLIENT (Browser)                      │
+│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌─────────────┐ │
+│  │ Landing  │  │  Game    │  │  Admin   │  │ Leaderboard │ │
+│  │  Page    │  │  Arena   │  │Dashboard │  │    Page     │ │
+│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └──────┬──────┘ │
+│       │              │              │               │        │
+│       └──────────────┴──────────────┴───────────────┘        │
+│                            │                                  │
+│                    HTTP / JSON API                            │
+└────────────────────────────┬────────────────────────────────┘
+                             │
+┌────────────────────────────┴────────────────────────────────┐
+│                   NEXT.JS SERVER (API Routes)                │
+│  ┌─────────┐  ┌──────────┐  ┌──────────┐  ┌─────────────┐  │
+│  │  Auth   │  │  Game    │  │  Admin   │  │  Middleware  │  │
+│  │ Routes  │  │ Routes   │  │ Routes   │  │ (JWT Guard)  │  │
+│  └────┬────┘  └────┬─────┘  └────┬─────┘  └──────┬──────┘  │
+│       │             │             │                │          │
+│       └─────────────┴─────────────┴────────────────┘         │
+│                            │                                  │
+│                     Prisma ORM Client                        │
+└────────────────────────────┬────────────────────────────────┘
+                             │
+┌────────────────────────────┴────────────────────────────────┐
+│               PostgreSQL (Neon Serverless)                   │
+│  Users · Sessions · Teams · TrainingEvents · GameRounds      │
+│  Submissions · ScoringConfig · GameControl · Announcements   │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h1 id="4-database-schema">4. Database Schema</h1>
+<h2 id="41-entity-relationship-overview">4.1 Entity Relationship Overview</h2>
+<p>The database consists of <strong>10 core models</strong> managed via Prisma ORM.</p>
+<h2 id="42-model-definitions">4.2 Model Definitions</h2>
+<h3 id="421-user-admin-accounts">4.2.1 User (Admin Accounts)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>String (cuid)</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>String (unique)</td>
+<td>Admin email address</td>
+</tr>
+<tr>
+<td><code>passwordHash</code></td>
+<td>String</td>
+<td>bcrypt-hashed password</td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td>String (default: "ADMIN")</td>
+<td>User role</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>DateTime</td>
+<td>Account creation timestamp</td>
+</tr>
+</tbody>
+</table>
+<h3 id="422-session">4.2.2 Session</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>String (cuid)</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td>String</td>
+<td>FK → User</td>
+</tr>
+<tr>
+<td><code>tokenHash</code></td>
+<td>String</td>
+<td>Hashed session token</td>
+</tr>
+<tr>
+<td><code>expiresAt</code></td>
+<td>DateTime</td>
+<td>Session expiry</td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td>Boolean</td>
+<td>Active session flag</td>
+</tr>
+</tbody>
+</table>
+<h3 id="423-team-player-teams">4.2.3 Team (Player Teams)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>String (cuid)</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td><code>teamCode</code></td>
+<td>String (unique)</td>
+<td>Team identifier (e.g., "TEAM-01")</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>String</td>
+<td>Display name</td>
+</tr>
+<tr>
+<td><code>pin</code></td>
+<td>String</td>
+<td>bcrypt-hashed access PIN</td>
+</tr>
+<tr>
+<td><code>rawPin</code></td>
+<td>String?</td>
+<td>Plaintext PIN (for admin visibility)</td>
+</tr>
+<tr>
+<td><code>currentRound</code></td>
+<td>Int (default: 1)</td>
+<td>Current round the team is on</td>
+</tr>
+<tr>
+<td><code>totalScore</code></td>
+<td>Float (default: 0)</td>
+<td>Cumulative score</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String (default: "active")</td>
+<td>Team status</td>
+</tr>
+<tr>
+<td><code>institution</code></td>
+<td>String?</td>
+<td>Institution name</td>
+</tr>
+<tr>
+<td><code>sessionToken</code></td>
+<td>String?</td>
+<td>Active session token</td>
+</tr>
+<tr>
+<td><code>sessionStartedAt</code></td>
+<td>DateTime?</td>
+<td>When the current session started</td>
+</tr>
+<tr>
+<td><code>roundStartedAt</code></td>
+<td>DateTime?</td>
+<td>When the current round timer started</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td>DateTime</td>
+<td>Registration timestamp</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Relations:</strong> <code>submissions</code> → Submission[]</p>
+<h3 id="424-trainingevent-60-historical-monthly-records">4.2.4 TrainingEvent (60 Historical Monthly Records)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Int (autoincrement)</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td><code>eventId</code></td>
+<td>String (unique)</td>
+<td>Event identifier (T001–T060)</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>Int</td>
+<td>Time period index</td>
+</tr>
+<tr>
+<td><code>monthOfYear</code></td>
+<td>Int</td>
+<td>Month (1–12)</td>
+</tr>
+<tr>
+<td><code>isSummerVacation</code></td>
+<td>Int (0/1)</td>
+<td>Summer vacation flag</td>
+</tr>
+<tr>
+<td><code>isMonsoon</code></td>
+<td>Int (0/1)</td>
+<td>Monsoon season flag</td>
+</tr>
+<tr>
+<td><code>isFestiveHoliday</code></td>
+<td>Int (0/1)</td>
+<td>Festive/holiday flag</td>
+</tr>
+<tr>
+<td><code>isWeddingSeason</code></td>
+<td>Int (0/1)</td>
+<td>Wedding season flag</td>
+</tr>
+<tr>
+<td><code>fuelPriceIndex</code></td>
+<td>Float</td>
+<td>Aviation fuel price index</td>
+</tr>
+<tr>
+<td><code>leisureDemandIndex</code></td>
+<td>Float</td>
+<td>Leisure travel demand index</td>
+</tr>
+<tr>
+<td><code>corporateActivityIndex</code></td>
+<td>Float</td>
+<td>Corporate travel activity index</td>
+</tr>
+<tr>
+<td><code>capacityEconomy</code></td>
+<td>Int</td>
+<td>Available economy seats capacity</td>
+</tr>
+<tr>
+<td><code>capacityPremium</code></td>
+<td>Int</td>
+<td>Available premium seats capacity</td>
+</tr>
+<tr>
+<td><code>competitorCapacityIndex</code></td>
+<td>Int</td>
+<td>Competitor airlines capacity index</td>
+</tr>
+<tr>
+<td><code>avgFareEconomy</code></td>
+<td>Float</td>
+<td>Average economy fare (₹)</td>
+</tr>
+<tr>
+<td><code>avgFarePremium</code></td>
+<td>Float</td>
+<td>Average premium fare (₹)</td>
+</tr>
+<tr>
+<td><code>promoIntensity</code></td>
+<td>Int</td>
+<td>Promotional intensity level</td>
+</tr>
+<tr>
+<td><code>weatherDisruptionIndex</code></td>
+<td>Float</td>
+<td>Weather disruption severity index</td>
+</tr>
+<tr>
+<td><code>specialEventFlag</code></td>
+<td>Int (0/1)</td>
+<td>Special event flag (elections, IPL, etc.)</td>
+</tr>
+<tr>
+<td><code>economySeats</code></td>
+<td>Int</td>
+<td><strong>Actual economy seats sold (answer)</strong></td>
+</tr>
+<tr>
+<td><code>premiumEconomySeats</code></td>
+<td>Int</td>
+<td><strong>Actual premium economy seats sold (answer)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="425-gameround-6-live-rounds">4.2.5 GameRound (6 Live Rounds)</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Int (autoincrement)</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td><code>roundNumber</code></td>
+<td>Int (unique)</td>
+<td>Round 1–6</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>String</td>
+<td>Round title (e.g., "Monsoon Disruption")</td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td>String</td>
+<td>Thematic scenario</td>
+</tr>
+<tr>
+<td><code>instructions</code></td>
+<td>String</td>
+<td>Detailed scenario narrative</td>
+</tr>
+<tr>
+<td>All 15 demand variables</td>
+<td>Various</td>
+<td>Same variables as TrainingEvent</td>
+</tr>
+<tr>
+<td><code>actualGa</code></td>
+<td>Int</td>
+<td><strong>Correct Economy Seats answer</strong></td>
+</tr>
+<tr>
+<td><code>actualVip</code></td>
+<td>Int</td>
+<td><strong>Correct Premium Economy Seats answer</strong></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>String (default: "ready")</td>
+<td>Round status</td>
+</tr>
+<tr>
+<td><code>timerSeconds</code></td>
+<td>Int (default: 600)</td>
+<td>Timer duration per round</td>
+</tr>
+</tbody>
+</table>
+<h3 id="426-the-6-round-scenarios">4.2.6 The 6 Round Scenarios</h3>
+<table>
+<thead>
+<tr>
+<th>Round</th>
+<th>Title</th>
+<th>Month</th>
+<th>Key Theme</th>
+<th>Economy Answer</th>
+<th>Premium Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>R1</strong></td>
+<td>Monsoon Disruption</td>
+<td>July (7)</td>
+<td>Heavy monsoon flooding, weather delays</td>
+<td>16,450</td>
+<td>1,720</td>
+</tr>
+<tr>
+<td><strong>R2</strong></td>
+<td>Fuel Duty Hike + Independence Day</td>
+<td>Aug (8)</td>
+<td>Fuel cost spike + holiday travel bump</td>
+<td>18,650</td>
+<td>1,920</td>
+</tr>
+<tr>
+<td><strong>R3</strong></td>
+<td>GST Rate Cut</td>
+<td>Sep (9)</td>
+<td>Tax reduction passed to passengers</td>
+<td>19,850</td>
+<td>2,050</td>
+</tr>
+<tr>
+<td><strong>R4</strong></td>
+<td>Diwali Festive Peak</td>
+<td>Oct (10)</td>
+<td>Year's strongest leisure/home-travel peak</td>
+<td>21,200</td>
+<td>2,280</td>
+</tr>
+<tr>
+<td><strong>R5</strong></td>
+<td>Wedding Season + Corporate Year-End</td>
+<td>Nov (11)</td>
+<td>Peak wedding + corporate travel</td>
+<td>21,650</td>
+<td>2,450</td>
+</tr>
+<tr>
+<td><strong>R6</strong></td>
+<td>New Year Holidays</td>
+<td>Dec (12)</td>
+<td>Christmas/New Year travel, cautious corporate</td>
+<td>21,100</td>
+<td>2,320</td>
+</tr>
+</tbody>
+</table>
+<h3 id="427-submission">4.2.7 Submission</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>String (cuid)</td>
+<td>Primary key</td>
+</tr>
+<tr>
+<td><code>teamId</code></td>
+<td>String</td>
+<td>FK → Team</td>
+</tr>
+<tr>
+<td><code>roundNumber</code></td>
+<td>Int</td>
+<td>Which round (1–6)</td>
+</tr>
+<tr>
+<td><code>predictedGa</code></td>
+<td>Int</td>
+<td>Team's Economy Seats prediction</td>
+</tr>
+<tr>
+<td><code>predictedVip</code></td>
+<td>Int</td>
+<td>Team's Premium Economy prediction</td>
+</tr>
+<tr>
+<td><code>reasoning</code></td>
+<td>String?</td>
+<td>Team's analytical reasoning</td>
+</tr>
+<tr>
+<td><code>gaError</code></td>
+<td>Float</td>
+<td>Absolute error for Economy</td>
+</tr>
+<tr>
+<td><code>vipError</code></td>
+<td>Float</td>
+<td>Absolute error for Premium</td>
+</tr>
+<tr>
+<td><code>accuracy</code></td>
+<td>Float</td>
+<td>Combined accuracy score</td>
+</tr>
+<tr>
+<td><code>score</code></td>
+<td>Float</td>
+<td>Final round score</td>
+</tr>
+<tr>
+<td><code>submittedAt</code></td>
+<td>DateTime</td>
+<td>Submission timestamp</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Constraints:</strong> Unique on <code>[teamId, roundNumber]</code></p>
+<h3 id="428-scoringconfig">4.2.8 ScoringConfig</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gaWeight</code></td>
+<td>Float</td>
+<td>0.6</td>
+<td>Weight for Economy accuracy (60%)</td>
+</tr>
+<tr>
+<td><code>vipWeight</code></td>
+<td>Float</td>
+<td>0.4</td>
+<td>Weight for Premium accuracy (40%)</td>
+</tr>
+<tr>
+<td><code>maxRoundScore</code></td>
+<td>Float</td>
+<td>1000</td>
+<td>Maximum score per round</td>
+</tr>
+<tr>
+<td><code>overForecastPenalty</code></td>
+<td>Float</td>
+<td>1.0</td>
+<td>Penalty multiplier for over-forecasting</td>
+</tr>
+<tr>
+<td><code>underForecastPenalty</code></td>
+<td>Float</td>
+<td>1.0</td>
+<td>Penalty multiplier for under-forecasting</td>
+</tr>
+</tbody>
+</table>
+<h3 id="429-gamecontrol">4.2.9 GameControl</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gameStatus</code></td>
+<td>String</td>
+<td>"lobby"</td>
+<td>Current game state</td>
+</tr>
+<tr>
+<td><code>activeRound</code></td>
+<td>Int</td>
+<td>1</td>
+<td>Active round number</td>
+</tr>
+<tr>
+<td><code>timerEnabled</code></td>
+<td>Boolean</td>
+<td>true</td>
+<td>Whether timer is active</td>
+</tr>
+<tr>
+<td><code>leaderboardEnabled</code></td>
+<td>Boolean</td>
+<td>true</td>
+<td>Whether leaderboard is visible</td>
+</tr>
+<tr>
+<td><code>timerStartedAt</code></td>
+<td>DateTime?</td>
+<td>—</td>
+<td>When the timer was started</td>
+</tr>
+<tr>
+<td><code>roundTimerSeconds</code></td>
+<td>Int</td>
+<td>600</td>
+<td>Timer duration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4210-announcement-auditlog">4.2.10 Announcement &amp; AuditLog</h3>
+<p>Standard models for system-wide broadcast messages and action logging respectively.</p>
+<hr />
+<h1 id="5-authentication-authorization">5. Authentication &amp; Authorization</h1>
+<h2 id="51-team-authentication">5.1 Team Authentication</h2>
+<pre><code>Team Login Flow:
+┌──────────┐    POST /api/auth/team-login     ┌──────────────┐
+│  Team    │ ──────────────────────────────── │  Server      │
+│  Client  │    { teamCode, pin }             │  Validates   │
+│          │ ◄──────────────────────────────── │  bcrypt PIN  │
+│          │    Set-Cookie: team-token         │  Issues JWT  │
+└──────────┘                                   └──────────────┘
+</code></pre>
+<ul>
+<li><strong>Endpoint:</strong> <code>POST /api/auth/team-login</code></li>
+<li><strong>Input:</strong> <code>teamCode</code> (string) + <code>pin</code> (string)</li>
+<li><strong>Validation:</strong> PIN verified against bcrypt hash in database</li>
+<li><strong>Session:</strong> Sets <code>team-token</code> HTTP-only cookie (12-hour expiry)</li>
+<li><strong>Conflict Handling:</strong> If a team is already logged in elsewhere, returns <code>SESSION_CONFLICT</code> error. Client can send <code>forceLogin: true</code> to override.</li>
+</ul>
+<h2 id="52-admin-authentication">5.2 Admin Authentication</h2>
+<ul>
+<li><strong>Endpoint:</strong> <code>POST /api/auth/login</code></li>
+<li><strong>Input:</strong> <code>email</code> (string) + <code>password</code> (string)</li>
+<li><strong>Validation:</strong> Password verified against bcrypt hash</li>
+<li><strong>Session:</strong> Generates a JWT via <code>jose</code> containing <code>{ userId, role: 'ADMIN' }</code>, stored in <code>oxg-session</code> HTTP-only cookie (24-hour expiry)</li>
+</ul>
+<h2 id="53-middleware-protection">5.3 Middleware Protection</h2>
+<p>The middleware at <code>src/middleware.ts</code> intercepts all requests:</p>
+<table>
+<thead>
+<tr>
+<th>Route Pattern</th>
+<th>Protection</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/game/*</code></td>
+<td>Requires valid <code>team-token</code> cookie</td>
+</tr>
+<tr>
+<td><code>/admin/*</code></td>
+<td>Requires valid <code>oxg-session</code> JWT with <code>role === 'ADMIN'</code></td>
+</tr>
+<tr>
+<td>All other routes</td>
+<td>Public access</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="6-api-reference">6. API Reference</h1>
+<h2 id="61-authentication-endpoints">6.1 Authentication Endpoints</h2>
+<h3 id="post-apiauthlogin"><code>POST /api/auth/login</code></h3>
+<p><strong>Purpose:</strong> Admin login<br />
+<strong>Body:</strong> <code>{ email: string, password: string }</code><br />
+<strong>Response:</strong> <code>{ success: true }</code> + sets <code>oxg-session</code> cookie<br />
+<strong>Errors:</strong> <code>401</code> Invalid credentials</p>
+<h3 id="post-apiauthteam-login"><code>POST /api/auth/team-login</code></h3>
+<p><strong>Purpose:</strong> Team login<br />
+<strong>Body:</strong> <code>{ teamCode: string, pin: string, forceLogin?: boolean }</code><br />
+<strong>Response:</strong> <code>{ success: true, teamId, teamCode, name }</code> + sets <code>team-token</code> cookie<br />
+<strong>Errors:</strong> <code>401</code> Invalid credentials, <code>409</code> SESSION_CONFLICT, <code>403</code> GAME_COMPLETED</p>
+<h3 id="post-apiauthlogout-post-apiauthteam-logout"><code>POST /api/auth/logout</code> / <code>POST /api/auth/team-logout</code></h3>
+<p><strong>Purpose:</strong> Clear session cookies<br />
+<strong>Response:</strong> <code>{ success: true }</code></p>
+<h3 id="get-apiauthme"><code>GET /api/auth/me</code></h3>
+<p><strong>Purpose:</strong> Get current authenticated user/team info<br />
+<strong>Response:</strong> <code>{ type: 'admin'|'team', data: {...} }</code></p>
+<h3 id="post-apiauthregister"><code>POST /api/auth/register</code></h3>
+<p><strong>Purpose:</strong> Register new team or admin account<br />
+<strong>Body:</strong> <code>{ teamCode, name, pin, institution? }</code> or <code>{ email, password }</code></p>
+<h2 id="62-game-endpoints">6.2 Game Endpoints</h2>
+<h3 id="get-apigamestatus"><code>GET /api/game/status</code></h3>
+<p><strong>Purpose:</strong> Get current game state<br />
+<strong>Auth:</strong> team-token<br />
+<strong>Response:</strong></p>
+<pre><code class="language-json">{
+  &quot;currentRound&quot;: 1,
+  &quot;status&quot;: &quot;active&quot;,
+  &quot;timerState&quot;: {
+    &quot;timerStarted&quot;: true,
+    &quot;remaining&quot;: 540,
+    &quot;total&quot;: 600
+  }
+}
+</code></pre>
+<h3 id="get-apigameroundnumber"><code>GET /api/game/round/[number]</code></h3>
+<p><strong>Purpose:</strong> Fetch round scenario data<br />
+<strong>Auth:</strong> team-token<br />
+<strong>Response:</strong> Round variables (month, fuel index, demand indices, capacity, fares, etc.) without answers</p>
+<h3 id="get-apigametraining-data"><code>GET /api/game/training-data</code></h3>
+<p><strong>Purpose:</strong> Fetch all 60 historical training events<br />
+<strong>Auth:</strong> team-token<br />
+<strong>Response:</strong> Array of TrainingEvent objects for analysis</p>
+<h3 id="post-apigamesubmit"><code>POST /api/game/submit</code></h3>
+<p><strong>Purpose:</strong> Submit team predictions<br />
+<strong>Auth:</strong> team-token<br />
+<strong>Body:</strong></p>
+<pre><code class="language-json">{
+  &quot;roundNumber&quot;: 1,
+  &quot;predictedGa&quot;: 16500,
+  &quot;predictedVip&quot;: 1750,
+  &quot;reasoning&quot;: &quot;Heavy monsoon + high weather disruption index of 8 suggests reduced leisure demand...&quot;
+}
+</code></pre>
+<p><strong>Response:</strong> Submission result with score breakdown</p>
+<h3 id="post-apigamestart-round"><code>POST /api/game/start-round</code></h3>
+<p><strong>Purpose:</strong> Start the round timer for the team<br />
+<strong>Auth:</strong> team-token<br />
+<strong>Response:</strong> <code>{ started: true, timerSeconds: 600 }</code></p>
+<h3 id="get-apigameresults"><code>GET /api/game/results</code></h3>
+<p><strong>Purpose:</strong> Fetch team's past submission results<br />
+<strong>Auth:</strong> team-token<br />
+<strong>Response:</strong> Array of Submission objects with scores</p>
+<h3 id="get-apigameleaderboard"><code>GET /api/game/leaderboard</code></h3>
+<p><strong>Purpose:</strong> Get ranked team standings<br />
+<strong>Response:</strong> <code>[{ teamCode, name, totalScore, rank }]</code></p>
+<h3 id="get-apigameannouncements"><code>GET /api/game/announcements</code></h3>
+<p><strong>Purpose:</strong> Get active broadcast messages<br />
+<strong>Response:</strong> Array of Announcement objects</p>
+<h2 id="63-admin-endpoints">6.3 Admin Endpoints</h2>
+<h3 id="getput-apiadmingame-control"><code>GET/PUT /api/admin/game-control</code></h3>
+<p><strong>Purpose:</strong> Read/update global game state<br />
+<strong>Auth:</strong> oxg-session (ADMIN)<br />
+<strong>PUT Body:</strong> <code>{ gameStatus, activeRound, timerEnabled, leaderboardEnabled }</code></p>
+<h3 id="getput-apiadminscoring"><code>GET/PUT /api/admin/scoring</code></h3>
+<p><strong>Purpose:</strong> Read/update scoring configuration<br />
+<strong>Auth:</strong> oxg-session (ADMIN)<br />
+<strong>PUT Body:</strong> <code>{ gaWeight, vipWeight, maxRoundScore, penalties }</code></p>
+<h3 id="getpost-apiadminteams"><code>GET/POST /api/admin/teams</code></h3>
+<p><strong>Purpose:</strong> List teams / Create new team<br />
+<strong>Auth:</strong> oxg-session (ADMIN)</p>
+<h3 id="post-apiadminbulk-import"><code>POST /api/admin/bulk-import</code></h3>
+<p><strong>Purpose:</strong> Import teams from Excel file<br />
+<strong>Auth:</strong> oxg-session (ADMIN)<br />
+<strong>Body:</strong> FormData with <code>.xlsx</code> file</p>
+<h3 id="get-apiadminrounds"><code>GET /api/admin/rounds</code></h3>
+<p><strong>Purpose:</strong> List all 6 game rounds with answers<br />
+<strong>Auth:</strong> oxg-session (ADMIN)</p>
+<h3 id="get-apiadminanswers"><code>GET /api/admin/answers</code></h3>
+<p><strong>Purpose:</strong> View correct answers for all rounds<br />
+<strong>Auth:</strong> oxg-session (ADMIN)</p>
+<h3 id="get-apiadminsubmissions"><code>GET /api/admin/submissions</code></h3>
+<p><strong>Purpose:</strong> View all team submissions across rounds<br />
+<strong>Auth:</strong> oxg-session (ADMIN)</p>
+<h3 id="post-apiadminannouncement"><code>POST /api/admin/announcement</code></h3>
+<p><strong>Purpose:</strong> Create a new broadcast announcement<br />
+<strong>Auth:</strong> oxg-session (ADMIN)</p>
+<h3 id="get-apiadmingameexportteams"><code>GET /api/admin/game/export/teams</code></h3>
+<h3 id="get-apiadmingameexportsubmissions"><code>GET /api/admin/game/export/submissions</code></h3>
+<p><strong>Purpose:</strong> Export data as Excel downloads<br />
+<strong>Auth:</strong> oxg-session (ADMIN)</p>
+<hr />
+<h1 id="7-frontend-pages-user-flow">7. Frontend Pages &amp; User Flow</h1>
+<h2 id="71-user-journey">7.1 User Journey</h2>
+<pre><code>┌────────────┐     ┌────────────┐     ┌────────────┐     ┌────────────┐
+│  Landing   │────▶│   Login    │────▶│  Briefing  │────▶│   Game     │
+│   Page     │     │  (Team)    │     │   Page     │     │   Arena    │
+└────────────┘     └────────────┘     └────────────┘     └─────┬──────┘
+                                                               │
+                                              ┌────────────────┤
+                                              ▼                ▼
+                                        ┌──────────┐    ┌──────────┐
+                                        │ Results  │    │Leaderboard│
+                                        │  Page    │    │   Page    │
+                                        └──────────┘    └──────────┘
+</code></pre>
+<h2 id="72-page-details">7.2 Page Details</h2>
+<h3 id="landing-page">Landing Page (<code>/</code>)</h3>
+<ul>
+<li>Hero section with airplane background image and "AERO NEXUS" title</li>
+<li>Badge: "PG Business Analytics Game 2026"</li>
+<li>Quick stats: 60 Months · 6 Rounds · 10m/Round · 100 Max Pts</li>
+<li>Login form with Team Code + Access Code (with eye toggle)</li>
+<li>Session conflict handling with force login option</li>
+<li>Game completion "Thank You" screen</li>
+<li>Overview section: "The Challenge at a Glance" (4 steps)</li>
+<li>Variable dictionary section listing all 15 demand drivers</li>
+<li>Footer with KSOM &amp; Analytics Konclave branding</li>
+</ul>
+<h3 id="team-login-login">Team Login (<code>/login</code>)</h3>
+<ul>
+<li>Standalone login card with Team Name + Access Code</li>
+<li>Eye toggle for PIN visibility</li>
+<li>Session conflict handling</li>
+<li>Link to Admin Portal</li>
+</ul>
+<h3 id="admin-login-loginadmin">Admin Login (<code>/login/admin</code>)</h3>
+<ul>
+<li>Admin branding with Shield icon and "Admin Access" badge</li>
+<li>Email + Password fields with eye toggle</li>
+<li>"ACCESS COMMAND CENTER" button</li>
+</ul>
+<h3 id="case-study-case-study">Case Study (<code>/case-study</code>)</h3>
+<ul>
+<li>Full business scenario narrative</li>
+<li>Airline context and revenue management background</li>
+</ul>
+<h3 id="guidelines-guidelines">Guidelines (<code>/guidelines</code>)</h3>
+<ul>
+<li>Game rules and participation guidelines</li>
+</ul>
+<h3 id="game-briefing-gamebriefing">Game Briefing (<code>/game/briefing</code>)</h3>
+<ul>
+<li>War Room Briefing with case study</li>
+<li>Tabbed interface: Case Study · Round Brief · Data &amp; Resources</li>
+<li>Business scenario: Airline demand-planning consultants</li>
+<li>Forecasting targets: Economy (16,000–22,000) and Premium (1,600–2,500)</li>
+<li>Variable dictionary with 15 demand drivers (seasonal flags, indices, capacity, fares)</li>
+<li>Data download buttons (Excel/CSV for 60 historical records)</li>
+<li>Round scenario reveal with all input variables and narrative</li>
+</ul>
+<h3 id="game-arena-game">Game Arena (<code>/game</code>)</h3>
+<ul>
+<li>Active round display with countdown timer</li>
+<li>Round scenario card with all 15 variables</li>
+<li>Dual input fields: Economy Seats (0–25,000) and Premium Economy Seats (0–5,000)</li>
+<li>Reasoning text area for analytical justification</li>
+<li>Submit button with confirmation modal</li>
+<li>Phase management: loading → briefing → prep → playing → review → confirm → result → transition → completed</li>
+</ul>
+<h3 id="market-analysis-gamemarket">Market Analysis (<code>/game/market</code>)</h3>
+<ul>
+<li>Interactive charts via Recharts</li>
+<li>All 60 historical monthly records displayed</li>
+<li>Trend visualization for fuel, demand, fare, and occupancy</li>
+</ul>
+<h3 id="results-gameresults">Results (<code>/game/results</code>)</h3>
+<ul>
+<li>Round-by-round score breakdown</li>
+<li>Economy and Premium accuracy percentages</li>
+<li>Cumulative score tracking</li>
+</ul>
+<h3 id="leaderboard-gameleaderboard">Leaderboard (<code>/game/leaderboard</code>)</h3>
+<ul>
+<li>Ranked team standings</li>
+<li>Total score display</li>
+<li>Real-time updates</li>
+</ul>
+<hr />
+<h1 id="8-components-library">8. Components Library</h1>
+<h2 id="81-shared-components">8.1 Shared Components</h2>
+<h3 id="logoheadertsx"><code>LogoHeader.tsx</code></h3>
+<ul>
+<li>Displays KSOM logo + divider + Analytics Konclave logo</li>
+<li>Center title: "AERO NEXUS"</li>
+<li>Subtitle: "PG Business Analytics Game 2026"</li>
+</ul>
+<h3 id="navbartsx"><code>Navbar.tsx</code></h3>
+<ul>
+<li>Main navigation bar with responsive design</li>
+<li>Team info display</li>
+</ul>
+<h3 id="themetoggletsx"><code>ThemeToggle.tsx</code></h3>
+<ul>
+<li>Light/Dark mode switcher</li>
+<li>Persists user preference</li>
+</ul>
+<h3 id="casestudymodaltsx"><code>CaseStudyModal.tsx</code></h3>
+<ul>
+<li>Full-screen modal overlay</li>
+<li>Contains complete airline scenario, rules, and variable explanations</li>
+</ul>
+<h2 id="82-game-components">8.2 Game Components</h2>
+<h3 id="resourcepaneltsx"><code>ResourcePanel.tsx</code></h3>
+<ul>
+<li>Complex data visualization panel using Recharts</li>
+<li>Renders 60 historical training events as interactive charts</li>
+<li>Trend analysis for fuel prices, demand indices, fares, capacity, and occupancy</li>
+<li>Used during gameplay for pattern analysis and forecasting reference</li>
+</ul>
+<hr />
+<h1 id="9-game-mechanics-scoring">9. Game Mechanics &amp; Scoring</h1>
+<h2 id="91-game-structure">9.1 Game Structure</h2>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Description</th>
+<th>Duration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lobby</strong></td>
+<td>Teams register and wait</td>
+<td>Until admin starts</td>
+</tr>
+<tr>
+<td><strong>Round 1–6</strong></td>
+<td>Each round presents a unique monthly scenario</td>
+<td>10 min (default)</td>
+</tr>
+<tr>
+<td><strong>Completed</strong></td>
+<td>All rounds finished, final rankings shown</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="92-the-15-demand-driver-variables">9.2 The 15 Demand Driver Variables</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Variable</th>
+<th>Type</th>
+<th>Range/Values</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Month of Year</td>
+<td>Int</td>
+<td>1–12</td>
+<td>Calendar month</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Summer Vacation</td>
+<td>Binary</td>
+<td>0/1</td>
+<td>Summer vacation period flag</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Monsoon</td>
+<td>Binary</td>
+<td>0/1</td>
+<td>Monsoon season flag</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Festive Holiday</td>
+<td>Binary</td>
+<td>0/1</td>
+<td>Festive holiday flag (Diwali, Independence Day, etc.)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Wedding Season</td>
+<td>Binary</td>
+<td>0/1</td>
+<td>Peak wedding season flag</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Fuel Price Index</td>
+<td>Float</td>
+<td>~85–110</td>
+<td>Aviation turbine fuel price index</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Leisure Demand Index</td>
+<td>Float</td>
+<td>~90–150</td>
+<td>Leisure travel demand indicator</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Corporate Activity Index</td>
+<td>Float</td>
+<td>~95–135</td>
+<td>Corporate/business travel indicator</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Capacity Economy</td>
+<td>Int</td>
+<td>~17,000–22,000</td>
+<td>Available economy seats</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Capacity Premium</td>
+<td>Int</td>
+<td>~1,800–2,500</td>
+<td>Available premium economy seats</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Competitor Capacity Index</td>
+<td>Int</td>
+<td>~95–115</td>
+<td>Competing airlines' capacity</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Avg Fare Economy</td>
+<td>Float</td>
+<td>~₹2,800–4,300</td>
+<td>Average economy ticket fare</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Avg Fare Premium</td>
+<td>Float</td>
+<td>~₹7,500–10,800</td>
+<td>Average premium ticket fare</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Promo Intensity</td>
+<td>Int</td>
+<td>0–3</td>
+<td>Promotional campaign intensity</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Weather Disruption Index</td>
+<td>Float</td>
+<td>0–10</td>
+<td>Severity of weather disruptions</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Special Event Flag</td>
+<td>Binary</td>
+<td>0/1</td>
+<td>National events (elections, IPL, etc.)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="93-forecasting-targets">9.3 Forecasting Targets</h2>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Range</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Economy Seats</strong></td>
+<td>~16,000 – 22,000</td>
+<td>Economy cabin seats sold</td>
+</tr>
+<tr>
+<td><strong>Premium Economy Seats</strong></td>
+<td>~1,600 – 2,500</td>
+<td>Premium economy cabin seats sold</td>
+</tr>
+</tbody>
+</table>
+<h2 id="94-scoring-algorithm">9.4 Scoring Algorithm</h2>
+<p>The scoring engine is implemented in <code>src/lib/scoring.ts</code>:</p>
+<pre><code>Score Calculation:
+─────────────────
+1. Economy Error  = |predictedEco  - actualEco|  / actualEco  × 100
+2. Premium Error  = |predictedPrem - actualPrem| / actualPrem × 100
+
+3. Economy Accuracy  = max(0, 100 - Economy Error)
+4. Premium Accuracy  = max(0, 100 - Premium Error)
+
+5. Weighted Accuracy = (Economy Accuracy × gaWeight) + (Premium Accuracy × vipWeight)
+   Default weights: gaWeight = 0.6 (Economy), vipWeight = 0.4 (Premium)
+
+6. Penalty Adjustments:
+   - Over-forecast: multiply error by overForecastPenalty (default 1.0)
+   - Under-forecast: multiply error by underForecastPenalty (default 1.0)
+
+7. Final Score = (Weighted Accuracy / 100) × maxRoundScore
+   Default maxRoundScore = 1000
+</code></pre>
+<h2 id="95-timer-mechanism">9.5 Timer Mechanism</h2>
+<ul>
+<li>Timer is managed globally via <code>GameControl.timerEnabled</code> and per-team via <code>Team.roundStartedAt</code></li>
+<li>When a team starts a round, <code>roundStartedAt</code> is set to the current timestamp</li>
+<li>Remaining time = <code>timerSeconds - elapsed seconds since roundStartedAt</code></li>
+<li>Timer state is persisted in localStorage for same-device recovery</li>
+<li>Server is authoritative — client syncs from <code>/api/game/status</code></li>
+</ul>
+<hr />
+<h1 id="10-admin-dashboard">10. Admin Dashboard</h1>
+<h2 id="101-dashboard-overview-admin">10.1 Dashboard Overview (<code>/admin</code>)</h2>
+<ul>
+<li>Game status summary</li>
+<li>Active round indicator</li>
+<li>Total teams count</li>
+<li>Submission statistics</li>
+</ul>
+<h2 id="102-admin-pages">10.2 Admin Pages</h2>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Path</th>
+<th>Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Overview</strong></td>
+<td><code>/admin</code></td>
+<td>Dashboard stats, quick actions</td>
+</tr>
+<tr>
+<td><strong>Teams</strong></td>
+<td><code>/admin/teams</code></td>
+<td>List all teams, view PINs (eye toggle), create/delete teams, generate random PINs</td>
+</tr>
+<tr>
+<td><strong>Bulk Import</strong></td>
+<td><code>/admin/teams/bulk-import</code></td>
+<td>Upload Excel file to create multiple teams</td>
+</tr>
+<tr>
+<td><strong>Game Control</strong></td>
+<td><code>/admin/game-control</code></td>
+<td>Set active round, enable/disable timer, toggle leaderboard, control game state</td>
+</tr>
+<tr>
+<td><strong>Rounds</strong></td>
+<td><code>/admin/rounds</code></td>
+<td>View all 6 rounds with scenario details and answers</td>
+</tr>
+<tr>
+<td><strong>Scoring</strong></td>
+<td><code>/admin/scoring</code></td>
+<td>Configure weights, penalties, max scores</td>
+</tr>
+<tr>
+<td><strong>Submissions</strong></td>
+<td><code>/admin/submissions</code></td>
+<td>View all team submissions across all rounds</td>
+</tr>
+<tr>
+<td><strong>Answers</strong></td>
+<td><code>/admin/answers</code></td>
+<td>View/reveal correct answers for each round</td>
+</tr>
+<tr>
+<td><strong>Announcements</strong></td>
+<td><code>/admin/announcements</code></td>
+<td>Create broadcast messages for teams</td>
+</tr>
+<tr>
+<td><strong>Leaderboard</strong></td>
+<td><code>/admin/leaderboard</code></td>
+<td>Admin view of rankings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="103-team-management-features">10.3 Team Management Features</h2>
+<ul>
+<li><strong>Create Team:</strong> Manual creation with custom team code and PIN</li>
+<li><strong>Generate PIN:</strong> Auto-generate random secure PINs</li>
+<li><strong>Eye Toggle:</strong> Show/hide PINs in the team table</li>
+<li><strong>Bulk Import:</strong> Upload <code>.xlsx</code> file with team data</li>
+<li><strong>Export:</strong> Download team data as Excel</li>
+<li><strong>Session Management:</strong> View active sessions, force logout</li>
+</ul>
+<hr />
+<h1 id="11-types-utilities">11. Types &amp; Utilities</h1>
+<h2 id="111-core-types-srctypesindexts">11.1 Core Types (<code>src/types/index.ts</code>)</h2>
+<pre><code class="language-typescript">interface RoundData {
+  roundNumber: number;
+  title: string;
+  theme: string;
+  instructions: string;
+  monthOfYear: number;
+  isSummerVacation: number;
+  isMonsoon: number;
+  isFestiveHoliday: number;
+  isWeddingSeason: number;
+  fuelPriceIndex: number;
+  leisureDemandIndex: number;
+  corporateActivityIndex: number;
+  capacityEconomy: number;
+  capacityPremium: number;
+  competitorCapacityIndex: number;
+  avgFareEconomy: number;
+  avgFarePremium: number;
+  promoIntensity: number;
+  weatherDisruptionIndex: number;
+  specialEventFlag: number;
+}
+
+interface SubmissionResult {
+  predictedGa: number;
+  predictedVip: number;
+  gaError: number;
+  vipError: number;
+  accuracy: number;
+  score: number;
+}
+
+interface TrainingEvent {
+  eventId: string;
+  t: number;
+  monthOfYear: number;
+  // ... all 15 demand driver variables
+  economySeats: number;
+  premiumEconomySeats: number;
+}
+</code></pre>
+<h3 id="round_themes-constant">ROUND_THEMES Constant</h3>
+<p>Defines thematic scenarios for each of the 6 rounds:
+1. Monsoon Disruption
+2. Fuel Duty Hike + Independence Day
+3. GST Rate Cut
+4. Diwali Festive Peak
+5. Wedding Season + Corporate Year-End
+6. New Year Holidays</p>
+<h2 id="112-utility-functions-srclib">11.2 Utility Functions (<code>src/lib/</code>)</h2>
+<h3 id="authts"><code>auth.ts</code></h3>
+<ul>
+<li><code>createToken(payload)</code> — Creates JWT via jose</li>
+<li><code>verifyToken(token)</code> — Verifies JWT and returns payload</li>
+<li><code>hashPassword(password)</code> — bcrypt hash (12 salt rounds)</li>
+<li><code>comparePassword(input, hash)</code> — bcrypt compare</li>
+<li><code>getTeamFromCookie()</code> — Extracts team info from cookie</li>
+<li><code>getAdminFromCookie()</code> — Extracts admin info from cookie</li>
+</ul>
+<h3 id="scoringts"><code>scoring.ts</code></h3>
+<ul>
+<li><code>calculateScore(predicted, actual, config)</code> — Core scoring algorithm</li>
+</ul>
+<h3 id="utilsts"><code>utils.ts</code></h3>
+<ul>
+<li><code>cn(...classes)</code> — Tailwind class merger (clsx)</li>
+<li><code>formatNumber(n)</code> — Number formatting with commas</li>
+<li><code>formatTime(seconds)</code> — MM:SS timer display</li>
+<li><code>getRelativeTime(date)</code> — "2 minutes ago" style formatting</li>
+</ul>
+<h3 id="prismats"><code>prisma.ts</code></h3>
+<ul>
+<li>Global Prisma client singleton (prevents connection exhaustion in dev)</li>
+</ul>
+<hr />
+<h1 id="12-configuration-environment">12. Configuration &amp; Environment</h1>
+<h2 id="121-environment-variables">12.1 Environment Variables</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td>✅</td>
+<td>PostgreSQL connection string (pooled)</td>
+</tr>
+<tr>
+<td><code>DIRECT_URL</code></td>
+<td>✅</td>
+<td>Direct database connection (for migrations)</td>
+</tr>
+<tr>
+<td><code>JWT_SECRET</code></td>
+<td>✅</td>
+<td>Secret key for JWT signing</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_APP_URL</code></td>
+<td>❌</td>
+<td>Public application URL</td>
+</tr>
+<tr>
+<td><code>NODE_ENV</code></td>
+<td>❌</td>
+<td>Environment mode (development/production)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="122-build-configuration">12.2 Build Configuration</h2>
+<p><strong><code>next.config.mjs</code>:</strong>
+- ESLint errors ignored during build (<code>ignoreDuringBuilds: true</code>)
+- TypeScript errors ignored during build (<code>ignoreBuildErrors: true</code>)</p>
+<p><strong><code>tsconfig.json</code>:</strong>
+- Path alias: <code>@/*</code> → <code>./src/*</code>
+- Strict mode enabled</p>
+<hr />
+<h1 id="13-deployment-guide">13. Deployment Guide</h1>
+<h2 id="131-prerequisites">13.1 Prerequisites</h2>
+<ul>
+<li>Node.js 18+</li>
+<li>PostgreSQL database (Neon recommended)</li>
+<li>npm or yarn</li>
+</ul>
+<h2 id="132-local-development">13.2 Local Development</h2>
+<pre><code class="language-bash"># 1. Clone repository
+git clone https://github.com/Avinash-Panda-gg/optix-pg-game.git
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment
+cp .env.example .env
+# Edit .env with your database credentials
+
+# 4. Initialize database
+npm run db:push    # Push schema to database
+npm run db:seed    # Seed with training data + admin account
+
+# 5. Start development server
+npm run dev        # Runs on http://localhost:3000
+</code></pre>
+<h2 id="133-production-build">13.3 Production Build</h2>
+<pre><code class="language-bash">npm run build      # Runs: prisma generate &amp;&amp; next build
+npm start          # Starts production server
+</code></pre>
+<h2 id="134-vercel-deployment">13.4 Vercel Deployment</h2>
+<ol>
+<li>Connect GitHub repo to Vercel</li>
+<li>Set environment variables in Vercel dashboard</li>
+<li>Build command: <code>npx prisma generate &amp;&amp; next build</code></li>
+<li>After deploy: Run <code>npx prisma db push</code> and <code>npx prisma db seed</code></li>
+</ol>
+<h2 id="135-default-admin-credentials">13.5 Default Admin Credentials</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Email</td>
+<td><code>admin@pg-game.com</code></td>
+</tr>
+<tr>
+<td>Password</td>
+<td><code>Admin@123</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Change default credentials immediately after first login.</strong></p>
+</blockquote>
+<hr />
+<h1 id="14-project-structure">14. Project Structure</h1>
+<pre><code>opti-x-galaxy-pg/
+├── prisma/
+│   ├── schema.prisma          # Database schema definition
+│   └── seed.ts                # Database seed script (60 events + 6 rounds)
+├── public/
+│   └── airplane.png           # Hero background image
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── auth/
+│   │   │   │   ├── login/route.ts
+│   │   │   │   ├── team-login/route.ts
+│   │   │   │   ├── logout/route.ts
+│   │   │   │   ├── team-logout/route.ts
+│   │   │   │   ├── register/route.ts
+│   │   │   │   └── me/route.ts
+│   │   │   ├── game/
+│   │   │   │   ├── status/route.ts
+│   │   │   │   ├── round/[number]/route.ts
+│   │   │   │   ├── training-data/route.ts
+│   │   │   │   ├── submit/route.ts
+│   │   │   │   ├── start-round/route.ts
+│   │   │   │   ├── results/route.ts
+│   │   │   │   ├── leaderboard/route.ts
+│   │   │   │   └── announcements/route.ts
+│   │   │   └── admin/
+│   │   │       ├── teams/route.ts
+│   │   │       ├── bulk-import/route.ts
+│   │   │       ├── game-control/route.ts
+│   │   │       ├── scoring/route.ts
+│   │   │       ├── rounds/route.ts
+│   │   │       ├── answers/route.ts
+│   │   │       ├── submissions/route.ts
+│   │   │       ├── announcement/route.ts
+│   │   │       └── game/export/
+│   │   │           ├── teams/route.ts
+│   │   │           └── submissions/route.ts
+│   │   ├── admin/
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── teams/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── bulk-import/page.tsx
+│   │   │   ├── game-control/page.tsx
+│   │   │   ├── rounds/page.tsx
+│   │   │   ├── scoring/page.tsx
+│   │   │   ├── submissions/page.tsx
+│   │   │   ├── answers/page.tsx
+│   │   │   ├── announcements/page.tsx
+│   │   │   └── leaderboard/page.tsx
+│   │   ├── game/
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── briefing/page.tsx
+│   │   │   ├── market/page.tsx
+│   │   │   ├── results/page.tsx
+│   │   │   └── leaderboard/page.tsx
+│   │   ├── login/
+│   │   │   ├── page.tsx
+│   │   │   └── admin/page.tsx
+│   │   ├── register/page.tsx
+│   │   ├── case-study/page.tsx
+│   │   ├── guidelines/page.tsx
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── shared/
+│   │   │   ├── LogoHeader.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── ThemeToggle.tsx
+│   │   │   └── CaseStudyModal.tsx
+│   │   └── game/
+│   │       └── ResourcePanel.tsx
+│   ├── lib/
+│   │   ├── auth.ts
+│   │   ├── scoring.ts
+│   │   ├── utils.ts
+│   │   └── prisma.ts
+│   ├── types/
+│   │   └── index.ts
+│   └── middleware.ts
+├── .env.example
+├── next.config.mjs
+├── tailwind.config.ts
+├── tsconfig.json
+├── package.json
+└── README.md
+</code></pre>
+<hr />
+<div style="text-align:center; padding:40px 0; color:#999; font-size:12px;">
+<p><strong>OPTI-X GALAXY PG — AERO NEXUS</strong></p>
+<p>Built for Analytics Konclave 2026 · KIIT School of Management</p>
+<p>© 2026 All Rights Reserved</p>
+</div>
+</body>
+</html>
