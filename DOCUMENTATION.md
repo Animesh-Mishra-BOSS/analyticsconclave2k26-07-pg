@@ -810,7 +810,7 @@ npm start          # Starts production server
 
 | Field | Value |
 |-------|-------|
-| Email | `admin@pg-game.com` |
+| Email | `admin@aeronexus.com` |
 | Password | `Admin@123` |
 
 > ⚠️ **Change default credentials immediately after first login.**
