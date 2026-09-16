@@ -231,27 +231,6 @@ function BriefingContent() {
               </div>
             </Section>
 
-            <Section title="🔍 4-Step Forecasting Methodology">
-              <div className="space-y-3">
-                {[
-                  { step: '01', title: 'Identify Season & Flags', body: 'Check Summer/Monsoon/Festive/Wedding flags. These set the baseline demand regime.' },
-                  { step: '02', title: 'Assess Capacity & Competition', body: 'Look at Economy/Premium capacity and competitor index. These set supply-side constraints.' },
-                  { step: '03', title: 'Apply Index Modifiers', body: 'Adjust based on Leisure Demand, Corporate Activity, Fuel Price, Fares, Promo Intensity, and Weather Disruption.' },
-                  { step: '04', title: 'Justify & Lock In', body: 'Write reasoning before locking numbers. Structured reasoning earns full marks on the 40% logic component.' },
-                ].map(s => (
-                  <div key={s.step} className="flex gap-4 p-4 rounded-xl bg-[#0A111F] border border-slate-800">
-                    <div className="w-8 h-8 rounded-full bg-[#17D059]/10 border border-[#17D059]/30 text-[#17D059] font-black text-xs flex items-center justify-center shrink-0">
-                      {s.step}
-                    </div>
-                    <div>
-                      <div className="font-bold text-white text-sm mb-1">{s.title}</div>
-                      <div className="text-slate-400 text-xs leading-relaxed">{s.body}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Section>
-
             <Section title="🏆 Evaluation Rubric">
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <div className="p-4 rounded-xl bg-[#17D059]/5 border border-[#17D059]/20">
@@ -290,23 +269,6 @@ function BriefingContent() {
                   </li>
                 ))}
               </ul>
-            </Section>
-
-            <Section title="💡 Strategy Tips" defaultOpen={false}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {[
-                  'Festive + Wedding + Low Weather Disruption = historically strongest demand combination.',
-                  'Monsoon + High Weather Disruption + No Promo = lowest demand. Adjust forecast down significantly.',
-                  'Premium Economy is driven more by Corporate Activity and Wedding Season than by promotions.',
-                  'Economy demand correlates strongly with Leisure Demand Index and Promo Intensity.',
-                  'Weather Disruption Index > 5 historically reduces demand by 15-25%. Critical for monsoon months.',
-                  'Average 4-5 similar historical months for a stronger baseline rather than anchoring on one data point.',
-                ].map((tip, i) => (
-                  <div key={i} className="flex gap-2 p-3 rounded-xl bg-[#0A111F] border border-slate-800 text-xs text-slate-400">
-                    <span className="text-amber-400 shrink-0">✦</span> {tip}
-                  </div>
-                ))}
-              </div>
             </Section>
 
           </div>
@@ -437,8 +399,8 @@ function BriefingContent() {
                       <tr key={i} className="hover:bg-slate-800/30 transition-colors">
                         <td className="px-3 py-2 font-mono text-slate-400 text-[11px]">{d.eventId}</td>
                         <td className="px-3 py-2 font-bold text-white">{d.monthOfYear}</td>
-                        <td className="px-3 py-2 text-slate-300">{d.isSummerVacation}/{d.isMonsoon}</td>
-                        <td className="px-3 py-2 text-center text-amber-400 font-bold">{d.isFestiveHoliday}/{d.isWeddingSeason}</td>
+                        <td className="px-3 py-2 text-slate-300">{d.isSummerVacation ? '1(Yes)' : '0(No)'}/{d.isMonsoon ? '1(Yes)' : '0(No)'}</td>
+                        <td className="px-3 py-2 text-center text-amber-400 font-bold">{d.isFestiveHoliday ? '1(Yes)' : '0(No)'}/{d.isWeddingSeason ? '1(Yes)' : '0(No)'}</td>
                         <td className="px-3 py-2 text-center text-purple-400 font-bold">{d.fuelPriceIndex}/{d.leisureDemandIndex}/{d.corporateActivityIndex}</td>
                         <td className="px-3 py-2 text-slate-300">{d.capacityEconomy}/{d.capacityPremium}</td>
                         <td className="px-3 py-2 text-slate-300">{d.competitorCapacityIndex}/{d.promoIntensity}/{d.weatherDisruptionIndex}</td>
