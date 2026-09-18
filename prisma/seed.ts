@@ -1502,6 +1502,20 @@ async function main() {
   });
   console.log('Admin user created:', admin.email);
 
+  // Optix Club Admin
+  const optixHash = await bcrypt.hash('OPTIX@0321', 10);
+  const optixAdmin = await prisma.user.upsert({
+    where: { email: 'optixclubgame@gmail.com' },
+    update: { passwordHash: optixHash },
+    create: {
+      name: 'Optix Admin',
+      email: 'optixclubgame@gmail.com',
+      passwordHash: optixHash,
+      role: 'ADMIN',
+    },
+  });
+  console.log('Optix admin created:', optixAdmin.email);
+
   // Clear existing training events and game rounds (optional but good for clean seed)
   await prisma.trainingEvent.deleteMany({});
   await prisma.gameRound.deleteMany({});
