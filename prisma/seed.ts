@@ -1488,19 +1488,7 @@ const gameRounds = [
 async function main() {
   console.log('Starting seeding...');
 
-  // Create Admin User
-  const passwordHash = await bcrypt.hash('Admin@123', 10);
-  const admin = await prisma.user.upsert({
-    where: { email: 'admin@aeronexus.com' },
-    update: {},
-    create: {
-      name: 'Admin',
-      email: 'admin@aeronexus.com',
-      passwordHash,
-      role: 'ADMIN',
-    },
-  });
-  console.log('Admin user created:', admin.email);
+  // Primary Admin User (Optix Club Admin)
 
   // Optix Club Admin
   const optixHash = await bcrypt.hash('OPTIX@0321', 10);
