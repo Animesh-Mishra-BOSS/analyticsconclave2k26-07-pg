@@ -516,7 +516,7 @@ export default function GamePage() {
 
             {/* ── 7 SCENARIO VARIABLE CARDS ── */}
             <div>
-              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">15 Scenario Variables — Round {roundNumber}</div>
+              <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">13 Scenario Variables — Round {roundNumber}</div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {/* 1 Month */}
                 <div className="p-4 rounded-2xl bg-[#0B1222] border border-slate-700">
@@ -557,16 +557,7 @@ export default function GamePage() {
                   <div className="text-[10px] text-indigo-400 font-mono uppercase tracking-wider mb-1 flex items-center gap-1">Corp Activity</div>
                   <div className="font-bold text-indigo-300 text-lg">{roundData.corporateActivityIndex}</div>
                 </div>
-                {/* 6 Economy Capacity */}
-                <div className="p-4 rounded-2xl bg-[#0B1222] border border-emerald-900/50">
-                  <div className="text-[10px] text-emerald-400 font-mono uppercase tracking-wider mb-1 flex items-center gap-1">Eco Capacity</div>
-                  <div className="font-bold text-emerald-300 text-lg">{roundData.capacityEconomy}</div>
-                </div>
-                {/* 7 Premium Capacity */}
-                <div className="p-4 rounded-2xl bg-[#0B1222] border border-cyan-900/50">
-                  <div className="text-[10px] text-cyan-400 font-mono uppercase tracking-wider mb-1 flex items-center gap-1">Prem Capacity</div>
-                  <div className="font-bold text-cyan-300 text-lg">{roundData.capacityPremium}</div>
-                </div>
+
                 {/* 8 Competitor Capacity */}
                 <div className="p-4 rounded-2xl bg-[#0B1222] border border-red-900/50">
                   <div className="text-[10px] text-red-400 font-mono uppercase tracking-wider mb-1 flex items-center gap-1">Comp Capacity</div>
@@ -620,7 +611,7 @@ export default function GamePage() {
                   className="w-full text-xl sm:text-2xl p-4 rounded-xl bg-[#030712] border border-slate-700 text-white placeholder-slate-600 focus:ring-2 focus:ring-[#17D059] focus:border-transparent outline-none transition-all font-mono"
                 />
                 {gaForecast && !isBasicValid && (
-                  <p className="text-xs text-red-400 mt-1">Must be a whole number between 0 and 50,000.</p>
+                  <p className="text-xs text-red-400 mt-1">Must be a whole number between 0 and 25,000.</p>
                 )}
               </div>
 
@@ -638,7 +629,7 @@ export default function GamePage() {
                   className="w-full text-xl sm:text-2xl p-4 rounded-xl bg-[#030712] border border-slate-700 text-cyan-400 placeholder-slate-600 focus:ring-2 focus:ring-cyan-500 focus:border-transparent outline-none transition-all font-mono"
                 />
                 {vipForecast && !isPremiumValid && (
-                  <p className="text-xs text-red-400 mt-1">Must be a whole number between 0 and 10,000.</p>
+                  <p className="text-xs text-red-400 mt-1">Must be a whole number between 0 and 5,000.</p>
                 )}
               </div>
 
