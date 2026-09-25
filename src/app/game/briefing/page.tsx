@@ -173,21 +173,8 @@ function BriefingContent() {
               </p>
             </Section>
 
-            <Section title="🎯 Forecasting Targets">
-              <div className="grid grid-cols-2 gap-4 mb-3">
-                <div className="p-4 rounded-xl bg-[#17D059]/5 border border-[#17D059]/20 text-center">
-                  <div className="text-xs font-mono text-slate-400 uppercase mb-1">Economy Seats</div>
-                  <div className="text-3xl font-black text-[#17D059]">~16,000 – 22,000</div>
-                  <div className="text-xs text-slate-500 mt-1">General cabin</div>
-                </div>
-                <div className="p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/20 text-center">
-                  <div className="text-xs font-mono text-slate-400 uppercase mb-1">Premium Economy Seats</div>
-                  <div className="text-3xl font-black text-cyan-400">~1,600 – 2,500</div>
-                  <div className="text-xs text-slate-500 mt-1">Premium cabin</div>
-                </div>
-              </div>
-              <p className="text-slate-400 text-xs">Both values must be submitted every round. Your analytical reasoning is evaluated alongside the numbers.</p>
-            </Section>
+
+
 
             <Section title="📊 Variable Dictionary — The 15 Demand Drivers">
               <div className="overflow-x-auto">
